@@ -505,11 +505,19 @@ function initBurger() {
 function initScrollEffects() {
   // Back to top
   const btt = document.getElementById('backToTop');
-  if (btt) {
-    window.addEventListener('scroll', () => {
-      btt.classList.toggle('visible', window.scrollY > 400);
-    }, { passive: true });
-  }
+  const hero = document.querySelector('.hero');
+
+  const langCta = document.getElementById('langCta');
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 80;
+
+    // Back to top button
+    if (btt) btt.classList.toggle('visible', window.scrollY > 400);
+
+    // Lang-bar CTA button
+    if (langCta) langCta.classList.toggle('visible', scrolled);
+  }, { passive: true });
 
   // Reveal on scroll
   const reveals = document.querySelectorAll(
